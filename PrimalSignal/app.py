@@ -81,7 +81,7 @@ implicit_bias_patterns = [
 ]
 
 # Common gaming phrases that look bad in isolation but are just normal banter.
-# Only applies when no severe slang or bias patterns are present — so
+# Only applies when no severe slang or bias patterns are present; so
 # "git gud you fucking idiot" still scores high.
 gaming_banter_phrases = [
     (r'\bgit\s+gud\b',         -18),
@@ -201,7 +201,7 @@ hr {{ border-color: #f1f5f9 !important; }}
 """, unsafe_allow_html=True)
 
 
-# --- Core logic ---
+# Core Logic
 
 def preprocess(text):
     cleaned = text.lower()
@@ -210,7 +210,7 @@ def preprocess(text):
         if re.search(pattern, cleaned, re.IGNORECASE):
             found.append(replacement)
         cleaned = re.sub(pattern, replacement, cleaned, flags=re.IGNORECASE)
-    # Normalize looooong repeated characters (loooser → looser)
+    # Normalize looooong repeated characters (loooser -> looser)
     cleaned = re.sub(r'(.)\1{2,}', r'\1\1', cleaned)
     return cleaned, found
 
@@ -242,7 +242,7 @@ def analyze(message):
             scores[affected_label] = min(scores[affected_label] + pattern_boost, 100.0)
 
     # Apply gaming banter reduction only when no severe slang or bias detected,
-    # so "git gud" gets softened but "git gud you fucking idiot" does not.
+    # so "git gud" gets softened but "git gud you f*cking idiot" does not.
     has_severe = matched > 0 or len(bias_hits) > 0 or len(obfuscations) > 0
     gaming_reduction = 0
     if not has_severe:
@@ -343,7 +343,7 @@ sev_styles = {
 }
 
 
-# --- Page ---
+# Page
 
 st.markdown(f"""
 <div style="display:flex;align-items:center;justify-content:space-between;
