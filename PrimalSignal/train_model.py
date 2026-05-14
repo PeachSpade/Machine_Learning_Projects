@@ -25,23 +25,6 @@ X_train, X_test, y_train, y_test = train_test_split(
     messages, labels, test_size=0.2, random_state=42
 )
 
-# Why this is better than the old Naive Bayes setup:
-#
-# 1. TF-IDF now uses bigrams (ngram_range=(1,2)) — this lets it learn
-#    "your kind", "cotton field", "kill yourself" as single features,
-#    which is crucial for catching implicit racism and multi-word slurs.
-#
-# 2. sublinear_tf=True dampens the effect of a word appearing 100 times
-#    vs 10 times — more realistic for real chat messages.
-#
-# 3. LogisticRegression instead of Naive Bayes — LR learns negative weights
-#    too, so it can "unlearn" false positives (e.g. "kill it" in gaming
-#    context). NB only sees positive co-occurrences.
-#
-# 4. class_weight="balanced" compensates for the heavy class imbalance
-#    in the dataset (most comments are non-toxic), so the model doesn't
-#    just predict "safe" for everything ambiguous.
-
 print("Building pipeline...")
 pipeline = Pipeline([
     (
