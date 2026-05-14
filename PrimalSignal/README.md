@@ -1,6 +1,6 @@
 # PrimalSignal
 
-PrimalSignal is a toxicity detection tool built for gaming and online communities. You type in a message — something you'd actually say in a game — and it tells you whether it would get flagged, what category of toxicity it falls under, and how confident the model is.
+PrimalSignal is a toxicity detection tool built for gaming and online communities. You type in a message, something you'd actually say in a game, and it tells you whether it would get flagged, what category of toxicity it falls under, and how confident the model is.
 
 The idea came from the fact that basic word filters miss a lot. Someone can write around them easily, use leetspeak, or phrase something in a way that sounds innocent word-by-word but is obviously racist or threatening in context. This project tries to close that gap.
 
@@ -10,7 +10,7 @@ The idea came from the fact that basic word filters miss a lot. Someone can writ
 
 - Scores any message from 0–100% toxicity risk
 - Three verdict states: Clean, Borderline, and Toxic
-- Detects obfuscated language like `f*ck`, `f u c k`, `@sshole`
+- Detects obfuscated language like `f*ck`, `f u c k`
 - Catches implicit racism and dog-whistle phrasing that word filters miss entirely
 - Highlights flagged words directly in your message
 - Runs a live moderation log of everything you've analyzed in the session
